@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài Tập JavaScript - Ngày 5</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        .box {
+            padding: 15px;
+            border: 1px solid #0a0a0a;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        input {
+            padding: 5px;
+            width: 250px;
+        }
+        button {
+            padding: 6px 12px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .result {
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bài Tập JavaScript - Ngày 5</h1>
+    <p>Mở console để xem thêm kết quả.</p>
+    <hr>
+
+    <div class="box">
+        <h2>Bài 1: Đảo ngược chuỗi</h2>
+        <input id="reverseInput" type="text" placeholder="Nhập chuỗi...">
+        <button onclick="runReverse()">Chạy</button>
+        <p>Kết quả: <span id="reverseResult" class="result"></span></p>
+    </div>
+
+   
+    <div class="box">
+        <h2>Bài 2: Kiểm tra Palindrome</h2>
+        <input id="palInput" type="text" placeholder="Nhập chuỗi...">
+        <button onclick="runPalindrome()">Chạy</button>
+        <p>Kết quả: <span id="palResult" class="result"></span></p>
+    </div>
+
+  
+    <div class="box">
+        <h2>Bài 3: Hiển thị thông tin sinh viên (Template Literals)</h2>
+        <button onclick="showStudent()">Hiển thị thông tin</button>
+        <pre id="studentInfo" class="result"></pre>
+    </div>
+
+    
+    <div class="box">
+        <h2>Bài 4: Giải phương trình bậc 2 (a, b, c)</h2>
+
+        <input id="a" type="number" placeholder="Nhập a">
+        <input id="b" type="number" placeholder="Nhập b">
+        <input id="c" type="number" placeholder="Nhập c">
+        <button onclick="runPTB2()">Giải</button>
+
+        <p>Kết quả: <span id="ptb2Result" class="result"></span></p>
+    </div>
+
+    <script>
+
+       
+        function runReverse() {
+            let text = document.getElementById("reverseInput").value;
+            let reversed = text.split("").reverse().join("");
+            document.getElementById("reverseResult").innerText = reversed;
+        }
+
+      
+        function runPalindrome() {
+            let text = document.getElementById("palInput").value;
+            let clean = text.replace(/\s+/g, "").toLowerCase();
+            let reversed = clean.split("").reverse().join("");
+            let result = (clean === reversed) ? "Đúng, là palindrome" : "Không phải palindrome";
+            document.getElementById("palResult").innerText = result;
+        }
+
+      
+        const student = {
+            name: "Nguyen Van Khanh",
+            age: 21,
+            score: 10
+        };
+
+        function showStudent() {
+            let info = `
+Thông Tin Sinh Viên 
+Tên: ${student.name}
+Tuổi: ${student.age}
+Điểm: ${student.score}
+
+`;
+            document.getElementById("studentInfo").innerText = info;
+        }
+
+    
+        function runPTB2() {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+            let c = Number(document.getElementById("c").value);
+
+            if (a === 0) {
+                document.getElementById("ptb2Result").innerText = "Không phải phương trình bậc 2!";
+                return;
+            }
+
+            let delta = b*b - 4*a*c;
+
+            if (delta < 0) {
+                document.getElementById("ptb2Result").innerText = "Vô nghiệm";
+            } 
+            else if (delta === 0) {
+                let x = -b / (2*a);
+                document.getElementById("ptb2Result").innerText = "Nghiệm kép: x = " + x;
+            } 
+            else {
+                let x1 = (-b + Math.sqrt(delta)) / (2*a);
+                let x2 = (-b - Math.sqrt(delta)) / (2*a);
+                document.getElementById("ptb2Result").innerText = `x1 = ${x1}, x2 = ${x2}`;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
