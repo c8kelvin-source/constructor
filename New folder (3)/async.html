@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bài tập Async/Await</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+    h2 {
+      margin-bottom: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .box {
+      background: #fff;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-size: 18px;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Bài 1: Gọi API giả lập bằng async/await</h2>
+  <button onclick="callFakeAPI()">Gọi API</button>
+  <div id="apiResult" class="box">Kết quả API sẽ hiển thị ở đây...</div>
+
+  <h2>Bài 2: Tải danh sách người dùng và hiển thị người đầu tiên</h2>
+  <button onclick="loadUsers()">Tải người dùng</button>
+  <div id="userResult" class="box">Thông tin người dùng sẽ hiển thị ở đây...</div>
+
+  <!-- Nối file JS -->
+  <script src="app.js"></script>
+
+</body>
+</html>
