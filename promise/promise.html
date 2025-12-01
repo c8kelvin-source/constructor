@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài tập Promise - Fake API</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+    #result {
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 15px;
+      font-size: 18px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Bài tập Promise: Tải dữ liệu từ API giả lập</h2>
+
+  <button onclick="loadData()">Tải dữ liệu</button>
+
+  <div id="result">Kết quả sẽ hiển thị tại đây...</div>
+
+  <script>
+   
+    function fetchFakeAPI() {
+      return new Promise((resolve, reject) => {
+        document.getElementById("result").innerText = "Đang tải dữ liệu...";
+
+        setTimeout(() => {
+          const success = Math.random() > 0.3; 
+
+          if (success) {
+            resolve({ message: "Tải dữ liệu thành công!", data: [1, 2, 3] });
+          } else {
+            reject("Lỗi: Không thể tải dữ liệu từ API!");
+          }
+        }, 1500);
+      });
+    }
+
+  
+    function loadData() {
+      fetchFakeAPI()
+        .then(res => {
+          console.log("KẾT QUẢ:", res);
+          document.getElementById("result").innerText =
+            res.message + " | Data: " + JSON.stringify(res.data);
+        })
+        .catch(err => {
+          console.log("LỖI:", err);
+          document.getElementById("result").innerText = err;
+        });
+    }
+  </script>
+
+</body>
+</html>
